@@ -1,0 +1,7 @@
+/ModelSim/work
+/Quartus/
+*.mpf
+*.mti
+vsim*
+*.vstf
+*.bak
