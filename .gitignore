@@ -1,8 +1,15 @@
-/ModelSim/work
-/Quartus/
-*.pdf
-*.mpf
-*.mti
-vsim*
-*.vstf
-*.bak
+# Ignore everything 
+*
+
+# Except these files
+!.gitignore
+!*.txt
+!*.sv
+!/*/*.sv
+!/*/*/*.sv
+
+!*.v
+!/*/*.v
+!/*/*/*.v
+
+
