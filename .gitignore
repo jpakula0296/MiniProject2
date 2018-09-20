@@ -1,15 +1,15 @@
-# Ignore everything 
-*
+# Ignore base project files since we won't need to modify these
+/DE1_SoC_CAMERA/
 
-# Except these files
-!.gitignore
-!*.txt
-!*.sv
-!/*/*.sv
-!/*/*/*.sv
+# Project and simulation files
+/ModelSim/
+/Quartus/
+*.mpf
+*.mti
+vsim*
+*.vstf
+*.bak
 
-!*.v
-!/*/*.v
-!/*/*/*.v
+
 
 
