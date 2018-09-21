@@ -158,7 +158,7 @@ assign  VGA_G = SW[1]?(|oVGA_G[9:8]?8'hff:oVGA_G[7:0]):oVGA_G[9:2];
 assign  VGA_B = SW[1]?(|oVGA_B[9:8]?8'hff:oVGA_B[7:0]):oVGA_B[9:2];
 
 //D5M read 
-always@(posedge D5M_PIXLCLK)
+always@(posedge D5M_PIXCLK)
 begin
 	rCCD_DATA[0]	<=	D5M_D;
 	rCCD_LVAL[0]	<=	D5M_LVAL;
@@ -231,6 +231,8 @@ imgproc				u4a	(
 							.iSW(SW[3])
 							);
 
+
+// switch 2 switches between jusy greyscale and the greyscale convoluted image
 assign {sCCD_R,sCCD_G,sCCD_B,sCCD_DVAL}=SW[2]?{dCCD_R,dCCD_G,dCCD_B,dCCD_DVAL}:{pCCD_R,pCCD_G,pCCD_B,pCCD_DVAL};
 							
 //Frame count display

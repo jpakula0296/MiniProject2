@@ -1,0 +1,84 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/18.0
+vDE1_SoC_CAMERA
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+!s110 1537552577
+!i10b 1
+!s100 KkhGWP4FiA7Q2a^2jLI>>3
+I>U<W=WlAa^9mGT52eD`6`1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+!s105 DE1_SoC_CAMERA_sv_unit
+S1
+Z2 dC:/Users/CMPE_STUDENT/ECE554/MiniProject2/src
+w1537552574
+8C:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/DE1_SoC_CAMERA.sv
+FC:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/DE1_SoC_CAMERA.sv
+L0 37
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1537552577.000000
+!s107 C:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/DE1_SoC_CAMERA.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/DE1_SoC_CAMERA.sv|
+!i113 1
+Z4 o-work work -sv
+Z5 tCvgOpt 0
+n@d@e1_@so@c_@c@a@m@e@r@a
+vimgproc
+R0
+!s110 1537552632
+!i10b 1
+!s100 ETDPdO`8jQG2j5QbXVHi81
+IMhbY=l6B7mnJah@TC]fBM0
+R1
+!s105 imgproc_sv_unit
+S1
+R2
+w1537552630
+8C:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/imgproc.sv
+FC:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/imgproc.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1537552632.000000
+!s107 C:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/imgproc.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/imgproc.sv|
+!i113 1
+R4
+R5
+vRAW2GRAY
+R0
+!s110 1537552622
+!i10b 1
+!s100 AWhX=]JR>X0HO4]iAjf8P1
+Iil4KTiW6H0iS3RG0oU;Be0
+R1
+!s105 RAW2GRAY_sv_unit
+S1
+R2
+w1537552618
+8C:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/RAW2GRAY.sv
+FC:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/RAW2GRAY.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1537552622.000000
+!s107 C:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/RAW2GRAY.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/CMPE_STUDENT/ECE554/MiniProject2/src/RAW2GRAY.sv|
+!i113 1
+R4
+R5
+n@r@a@w2@g@r@a@y
