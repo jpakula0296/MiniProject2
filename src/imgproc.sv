@@ -13,4 +13,21 @@ module imgproc(
 	output oDVAL		// data valid output
 );
 
+// bayer pixel row buffers
+
+
+// convert image to grayscale
+RAW2GRAY grayscale(
+
+);
+
+//grayscale row buffers
+
+
+// 2d convolution of image w/ 3x3 filter
+conv convolution(
+
+);
+
+
 endmodule
