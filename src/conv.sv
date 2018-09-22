@@ -14,4 +14,10 @@ assign sobel2 = {{-1, 2, -1},
 		 {0, 0, 0},
 		 {1, 2, 1}};
 
+
+	always@(posedge iCLK, negedge iRST) begin
+		
+	
+	end
+
 endmodule
