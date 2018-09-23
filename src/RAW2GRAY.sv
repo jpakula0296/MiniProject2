@@ -16,7 +16,7 @@ wire [13:0] sum;
 reg [13:0] flopped_sum;
 wire [13:0] output_sum;
 
-shift_reg sr #(.DATA_WIDTH(12), .SHIFT_LENGTH(1280)) (
+shift_reg #(.DATA_WIDTH(12), .SHIFT_LENGTH(1280)) sr (
 	.clk(clk),
 	.rst(rst),
 	.en(pixel_valid),

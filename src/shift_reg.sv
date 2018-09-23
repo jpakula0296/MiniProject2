@@ -1,12 +1,10 @@
-module shift_reg(
-	parameter DATA_WIDTH = 12,
-	parameter SHIFT_LENGTH = 640,
-	input clk,
-	input rst,
-	input en,
-	input [DATA_WIDTH-1:0] in,
-	output [DATA_WIDTH-1:0] out,
-)
+module shift_reg(clk, rst, en, in, out);
+parameter DATA_WIDTH = 12;
+parameter SHIFT_LENGTH = 640;
+
+input clk, rst, en;
+input wire [DATA_WIDTH-1:0] in;
+output wire [DATA_WIDTH-1:0] out;
 
 reg [DATA_WIDTH-1:0] shift[SHIFT_LENGTH-1:0];
 
