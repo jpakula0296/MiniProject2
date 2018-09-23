@@ -86,7 +86,7 @@ module DE1_SoC_CAMERA(
 	input 		    [11:0]		D5M_D,
 	input 		          		D5M_FVAL,
 	input 		          		D5M_LVAL,
-	input 		          		D5M_PIXCLK,
+	input 		          		D5M_PIXLCLK,
 	output		          		D5M_RESET_N,
 	output		          		D5M_SCLK,
 	inout 		          		D5M_SDATA,
@@ -158,7 +158,7 @@ assign  VGA_G = SW[1]?(|oVGA_G[9:8]?8'hff:oVGA_G[7:0]):oVGA_G[9:2];
 assign  VGA_B = SW[1]?(|oVGA_B[9:8]?8'hff:oVGA_B[7:0]):oVGA_B[9:2];
 
 //D5M read 
-always@(posedge D5M_PIXCLK)
+always@(posedge D5M_PIXLCLK)
 begin
 	rCCD_DATA[0]	<=	D5M_D;
 	rCCD_LVAL[0]	<=	D5M_LVAL;
@@ -202,16 +202,16 @@ CCD_Capture			u3	(
 //D5M raw date convert to RGB data
 
 RAW2GRAY				u4	(	
-							.iCLK(D5M_PIXLCLK),
-							.iRST(DLY_RST_1),
-							.iDATA(mCCD_DATA),
-							.iDVAL(mCCD_DVAL),
+							.clk(D5M_PIXLCLK),
+							.rst(DLY_RST_1),
+							.pixel(mCCD_DATA),
+							.pixel_valid(mCCD_DVAL),
 //							.oRed(dCCD_R),
-							.oGrey(dCCD_G),
+							.gray_pixel(dCCD_G),
 //							.oBlue(dCCD_B),
-							.oDVAL(dCCD_DVAL),
-							.iX_Cont(X_Cont),
-							.iY_Cont(Y_Cont)
+							.gray_pixel_valid(dCCD_DVAL),
+							.col_num(X_Cont),
+							.row_num(Y_Cont)
 						   );
 
 						   assign	dCCD_R = dCCD_G;
@@ -268,7 +268,7 @@ Sdram_Control	   u7	(	//	HOST Side
 						   .WR1_LENGTH(8'h50),
 		               .WR1_LOAD(!DLY_RST_0),
 							.WR1_CLK(~D5M_PIXLCLK),
-							.WR1_FULL(LEDR[1]),
+							//.WR1_FULL(LEDR[1]),
 
 							//	FIFO Write Side 2
 							.WR2_DATA({1'b0,sCCD_G[6:2],sCCD_R[11:2]}),
@@ -278,7 +278,7 @@ Sdram_Control	   u7	(	//	HOST Side
 							.WR2_LENGTH(8'h50),
 							.WR2_LOAD(!DLY_RST_0),				
 							.WR2_CLK(~D5M_PIXLCLK),
-							.WR2_FULL(LEDR[2]),
+							//.WR2_FULL(LEDR[2]),
 
                      //	FIFO Read Side 1
 						   .RD1_DATA(Read_DATA1),

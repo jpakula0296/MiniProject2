@@ -28,8 +28,8 @@ assign sum = pixel + shift_out;
 assign output_sum = flopped_sum + sum;
 assign gray_pixel = output_sum[13:2];	// divide by 4 to average the pixels
 
-assign gray_pixel_valid = (pixel_valid && (row_num[0] == 1)
-			&& (col_num[0] == 1)) ? 1'b1 : 1'b0;
+assign gray_pixel_valid = (pixel_valid && (row_num[0] == 1'b1)
+			&& (col_num[0] == 1'b1)) ? 1'b1 : 1'b0;
 assign gray_pixel_edge = ((row_num == 15'd1) || (row_num == 15'd959)
 			|| (col_num == 15'd1) || (col_num == 15'd1279));
 
