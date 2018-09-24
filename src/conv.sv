@@ -5,7 +5,7 @@ module conv(
 	input [11:0] row0_pixel,
 	input [11:0] row1_pixel,
 	input [11:0] row2_pixel,
-	input row2_pixel_edge,
+	input row1_pixel_edge,
 	input input_switch,
 	output [11:0] conv_out,
 	output reg conv_valid
@@ -28,12 +28,12 @@ int sobel2[3][3];
 // the two outside rows, the math can simply be done on each column
 // or row of pixels individually followed by finding the difference
 assign sobel1 = {{-1, 0, 1},
-				 {-2, 0, 2},
-				 {-1, 0, 1}};
+		{-2, 0, 2},
+		{-1, 0, 1}};
 
 assign sobel2 = {{-1, -2, -1},
-				  {0, 0, 0},
-				  {1, 2, 1}};
+		{0, 0, 0},
+		{1, 2, 1}};
 
 // multiplying data_matrix[1][0] by 2 and summing the column
 assign left_column = data_matrix[0][0] + {data_matrix[1][0], 1'b0} + data_matrix[2][0];
