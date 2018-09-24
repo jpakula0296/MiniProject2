@@ -20,11 +20,9 @@ assign row0_pixel = shift[SHIFT_LENGTH - 1][DATA_WIDTH - 1 : 0];
 assign row1_pixel = shift[2 * SHIFT_LENGTH - 1][DATA_WIDTH - 1 : 0];
 assign row2_pixel = shift[3 * SHIFT_LENGTH - 1][DATA_WIDTH - 1 : 0];
 
-// pixel edge is last value in buffer
-assign row1_pixel_edge = shift[DATA_LENGTH*2 - 1][DATA_WIDTH];
-
-// valid signal
-assign row1_pixel_valid = shift[DATA_LENGTH*2- 1][DATA_WIDTH + 1];
+// edge and valid for row1 pixel passed as metadata in end of row1
+assign row1_pixel_edge = shift[SHIFT_LENGTH*2 - 1][DATA_WIDTH];
+assign row1_pixel_valid = shift[SHIFT_LENGTH*2- 1][DATA_WIDTH + 1];
 
 // shift register operation
 integer i;
