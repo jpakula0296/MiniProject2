@@ -2,8 +2,8 @@ module image_buffer(clk, rst, en, pixel_in, pixel_edge, pixel_valid, row0_pixel,
 	row2_pixel, row2_pixel_edge, row2_pixel_valid);
 
 parameter DATA_WIDTH = 12; // 12 bit width
-parameter SHIFT_LENGTH = 640; //
-parameter DATA_LENGTH = SHIFT_LENGTH * 3;
+parameter SHIFT_LENGTH = 640;
+parameter DATA_LENGTH = SHIFT_LENGTH * 3; // need to hold 3 total
 
 // TODO: Not sure where pixel_valid needs to be used
 input clk, rst, en, pixel_edge, pixel_valid; // check if we have rgb pixel edge
@@ -22,7 +22,7 @@ assign row1_pixel = shift[2 * SHIFT_LENGTH - 1][DATA_WIDTH - 1 : 0];
 assign row2_pixel = shift[3 * SHIFT_LENGTH - 1][DATA_WIDTH - 1 : 0];
 
 // pixel edge is last value in buffer
-assign row2_pixel_edge = shift[DATA_LENGTH - 1][DATA_WIDTH - 1 : 0];
+assign row2_pixel_edge = shift[DATA_LENGTH - 1][DATA_WIDTH];
 
 // valid signal
 assign row2_pixel_valid = shift[DATA_LENGTH - 1][DATA_WIDTH + 1];
