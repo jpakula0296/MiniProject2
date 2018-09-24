@@ -6,6 +6,7 @@ module conv(
 	input [11:0] row1_pixel,
 	input [11:0] row2_pixel,
 	input row2_pixel_edge,
+	input input_switch,
 	output [11:0] conv_out,
 	output reg conv_valid
 );
@@ -55,8 +56,8 @@ assign bottom_row = data_matrix[2][0] + {data_matrix[2][1], 1'b0} + data_matrix[
 assign horiz_conv = (bottom_row > top_row) ? bottom_row - top_row : top_row - bottom_row;
 	
 	
-// need to set switch to select between horizontal and vertical edge detection	
-assign conv_out = horiz_conv;	
+// switch to select between horizontal and vertical edge detection	
+assign conv_out = input_switch ? horiz_conv : vert_conv;	
 	
 	
 // also need to deal with edges

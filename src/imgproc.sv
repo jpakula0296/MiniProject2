@@ -60,7 +60,7 @@ conv convolution(
 	.row0_pixel(row0_pixel),
 	.row1_pixel(row1_pixel),
 	.row2_pixel(row2_pixel),
-//	.input_switch(iSW),
+	.input_switch(iSW),
 	.row2_pixel_edge(row2_pixel_edge),
 	.conv_out(conv_out),
 	.conv_valid(oDVAL)
