@@ -5,7 +5,6 @@ parameter DATA_WIDTH = 12; // 12 bit width
 parameter SHIFT_LENGTH = 640;
 parameter DATA_LENGTH = SHIFT_LENGTH * 3; // need to hold 3 total
 
-// TODO: Not sure where pixel_valid needs to be used
 input clk, rst, pixel_edge, pixel_valid; // check if we have rgb pixel edge
 
 input wire [DATA_WIDTH-1:0] pixel_in;
