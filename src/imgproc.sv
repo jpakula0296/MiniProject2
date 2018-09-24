@@ -14,7 +14,7 @@ module imgproc(
 );
 wire [11:0] gray_pixel, row0_pixel, row1_pixel, row2_pixel, conv_out;
 wire gray_pixel_valid, gray_pixel_edge;
-wire row2_pixel_valid, row2_pixel_edge;
+wire row1_pixel_valid, row1_pixel_edge;
 
 assign oRed = conv_out;
 assign oGreen = conv_out;
@@ -35,7 +35,7 @@ RAW2GRAY grayscale(
 );
 
 //buffers three rows of grayscale pixels and outputs to convolution
- 	image_buffer imgbuff(
+image_buffer imgbuff(
 	.clk(iCLK),
 	.rst(iRST),
 	.pixel_in(gray_pixel),		// input pixel
@@ -44,20 +44,20 @@ RAW2GRAY grayscale(
 	.row0_pixel(row0_pixel), // output pixels
 	.row1_pixel(row1_pixel),
 	.row2_pixel(row2_pixel),
-	.row2_pixel_edge(row2_pixel_edge),	// output pixel is an edge
-	.row2_pixel_valid(row2_pixel_valid)	// output pixel is valid
+	.row1_pixel_edge(row1_pixel_edge),	// output pixel is an edge
+	.row1_pixel_valid(row1_pixel_valid)	// output pixel is valid
 );
 
 // 2d convolution of image w/ 3x3 filter
 conv convolution(
 	.clk(iCLK),
 	.rst(iRST),
-	.valid(row2_pixel_valid),
+	.valid(row1_pixel_valid),
 	.row0_pixel(row0_pixel),
 	.row1_pixel(row1_pixel),
 	.row2_pixel(row2_pixel),
 	.input_switch(iSW),
-	.row2_pixel_edge(row2_pixel_edge),
+	.row1_pixel_edge(row1_pixel_edge),
 	.conv_out(conv_out),
 	.conv_valid(oDVAL)
 );
