@@ -1,4 +1,4 @@
-module image_buffer.tb()
+module image_buffer_tb();
 
 parameter DATA_WIDTH = 12;
 parameter SHIFT_LENGTH = 640;
@@ -22,7 +22,9 @@ image_buffer imgbuff(
   .pixel_valid(pixel_valid),
   .row0_pixel(row0_pixel),
   .row1_pixel(row1_pixel),
-  .row2_pixel,(row2_pixel),
+  .row2_pixel(row2_pixel),
   .row2_pixel_edge(row2_pixel_edge),
   .row2_pixel_valid(row2_pixel_valid)
-  );
+ );
+
+ endmodule

@@ -1,4 +1,4 @@
-module image_buffer(clk, rst, en, pixel_in, pixel_edge, pixel_valid row0_pixel, row1_pixel,
+module image_buffer(clk, rst, en, pixel_in, pixel_edge, pixel_valid, row0_pixel, row1_pixel,
 	row2_pixel, row2_pixel_edge, row2_pixel_valid);
 
 parameter DATA_WIDTH = 12; // 12 bit width
