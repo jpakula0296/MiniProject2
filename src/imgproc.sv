@@ -35,7 +35,7 @@ RAW2GRAY grayscale(
 );
 
 //buffers three rows of grayscale pixels and outputs to convolution
-row_buff row_buffer(
+ 	image_buffer imgbuff(
 	.clk(iCLK),
 	.rst(iRST),
 	.pixel_in(gray_pixel),		// input pixel
