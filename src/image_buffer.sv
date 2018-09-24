@@ -1,4 +1,4 @@
-module image_buffer(clk, rst, en, pixel_in, pixel_edge, pixel_valid, row0_pixel, row1_pixel,
+module image_buffer(clk, rst, pixel_in, pixel_edge, pixel_valid, row0_pixel, row1_pixel,
 	row2_pixel, row2_pixel_edge, row2_pixel_valid);
 
 parameter DATA_WIDTH = 12; // 12 bit width
@@ -6,7 +6,7 @@ parameter SHIFT_LENGTH = 640; //
 parameter DATA_LENGTH = SHIFT_LENGTH * 3;
 
 // TODO: Not sure where pixel_valid needs to be used
-input clk, rst, en, pixel_edge, pixel_valid; // check if we have rgb pixel edge
+input clk, rst, pixel_edge, pixel_valid; // check if we have rgb pixel edge
 
 input wire [DATA_WIDTH-1:0] pixel_in;
 output wire [DATA_WIDTH-1:0] row0_pixel;
@@ -35,7 +35,7 @@ always @(posedge clk, negedge rst) begin
 			shift[i] <= 0;
 		end
 	end else begin // shift by SHIFT_LENGTH on enable
-		if (en) begin
+		if (pixel_valid) begin
 			for (i = 1; i < SHIFT_LENGTH; i = i+1) begin
 				shift[i] <= shift[i-1];
 			end
