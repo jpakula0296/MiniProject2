@@ -47,10 +47,7 @@ initial begin
 			@(posedge clk) begin
 				x_cont_in = x;
 				y_cont_in = y;
-				data_valid_in = 1;
-				#10;
-				data_valid_in = 0;
-				#10;
+				data_in = {y_cont_in[5:0], x_cont_in[5:0]};
 			end
 
 		end
