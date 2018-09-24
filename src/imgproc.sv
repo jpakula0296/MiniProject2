@@ -40,16 +40,12 @@ RAW2GRAY grayscale(
 	.rst(iRST),
 	.pixel_in(gray_pixel),		// input pixel
 	.pixel_edge(gray_pixel_edge),	// input pixel is an edge 1: true / 0 false
-
-//	Commenting below out because I can't figure out why its needed
 	.pixel_valid(gray_pixel_valid),	// pixel is valid 	""
-
 	.row0_pixel(row0_pixel), // output pixels
 	.row1_pixel(row1_pixel),
 	.row2_pixel(row2_pixel),
 	.row2_pixel_edge(row2_pixel_edge),	// output pixel is an edge
 	.row2_pixel_valid(row2_pixel_valid)	// output pixel is valid
-
 );
 
 // 2d convolution of image w/ 3x3 filter
