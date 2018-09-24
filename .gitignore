@@ -3,6 +3,7 @@
 
 # Project and simulation files
 /ModelSim/
+/src/work/
 /Quartus/
 *.mpf
 *.mti
