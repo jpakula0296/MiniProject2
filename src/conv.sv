@@ -6,7 +6,6 @@ module conv(
 	output [11:0] conv_out
 );
 
-//wire [11:0] data_matrix [2:0][2:0];  // 3x3 array of pixels
 wire [11:0] left_column;  // sum of left column from vertical convolution
 wire [11:0] right_column;  // sum of right column from vertical convolution
 wire [11:0] vert_conv;  // post-convolution value for vertical convolution
@@ -43,10 +42,10 @@ assign right_column = data_matrix[0][2] + (2*data_matrix[1][2]) + data_matrix[2]
 assign vert_conv = (right_column > left_column) ? right_column - left_column : left_column - right_column;
 
 // multiplying data_matrix[0][1] by 2 and summing the row
-assign top_row = data_matrix[0][0] + {data_matrix[0][1], 1'b0} + data_matrix[0][2];
+assign top_row = data_matrix[0][0] + (2*data_matrix[0][1]) + data_matrix[0][2];
 
 // multiplying data_matrix[2][1] by 2 and summing the row
-assign bottom_row = data_matrix[2][0] + {data_matrix[2][1], 1'b0} + data_matrix[2][2];
+assign bottom_row = data_matrix[2][0] + (2*data_matrix[2][1]) + data_matrix[2][2];
 		 
 // subtract, due to the negative values in the filter
 // this simultaneously gets the absolute value
@@ -56,8 +55,6 @@ assign horiz_conv = (bottom_row > top_row) ? bottom_row - top_row : top_row - bo
 // switch to select between horizontal and vertical edge detection	
 assign conv_out = input_switch ? horiz_conv : vert_conv;	
 	
-	
-// also need to deal with edges
 
 
 endmodule

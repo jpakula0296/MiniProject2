@@ -51,7 +51,6 @@ assign row1_pixel_edge = shift[2 * SHIFT_LENGTH - 1][DATA_WIDTH];
 assign row1_pixel_valid = shift[2 * SHIFT_LENGTH - 1][DATA_WIDTH + 1];
 
 
-// TODO fix? also edge
 assign pixel_valid_out = pixel_valid & row1_pixel_valid;
 
 // form data matrix to pass to convolution
