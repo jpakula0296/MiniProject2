@@ -1,3 +1,7 @@
+/* wrapper for connecting RAW2GRAY, image_buffer, and conv buffers
+ * take raw input from base DE1-SoC Camera project and output grayscale
+ * image or edge detection image based on input_switch
+*/
 module imgproc(
 	input iCLK, 		// clock
 	input iRST, 		// reset
@@ -47,14 +51,15 @@ image_buffer imgbuff(
 );
 
 // 2d convolution of image w/ 3x3 filter
-conv convolution( 
+conv convolution(
 	.clk(iCLK),
 	.rst(iRST),
-	.data_matrix(data_matrix),
-	.input_switch(iSW),
-	.conv_out(conv_out)
+	.data_matrix(data_matrix), // passed in from image_buffer
+	.input_switch(iSW), // chooses grayscale or edge detection
+	.conv_out(conv_out) // our main output
 );
 
+// assign each color channel to our output
 assign oRed = conv_out;
 assign oGreen = conv_out;
 assign oBlue = conv_out;
