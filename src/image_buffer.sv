@@ -18,7 +18,7 @@ output pixel_valid_out;
 integer i, j, k;
 
 // shift register operation
-reg [DATA_WIDTH-1:0] shift[DATA_LENGTH+1:0];  // shift reg
+reg [DATA_WIDTH+1:0] shift[DATA_LENGTH-1:0];  // shift reg
 
 always @(posedge clk, negedge rst) begin
 	if (!rst) begin // clear entire register on reset
@@ -27,7 +27,7 @@ always @(posedge clk, negedge rst) begin
 		end
 	end else begin // shift by SHIFT_LENGTH on enable
 		if (pixel_valid) begin
-			for (i = 1; i < SHIFT_LENGTH; i = i+1) begin
+			for (i = 1; i < DATA_LENGTH; i = i+1) begin
 				shift[i] <= shift[i-1];
 			end
 			shift[0] <= {1'b1, pixel_edge, pixel_in};
@@ -64,7 +64,7 @@ always@(posedge clk, negedge rst) begin
 				end
 		end
 	end
-	else if (row1_pixel_valid) begin
+	else if (pixel_valid) begin
 		// shift over a pixel every clock
 		// conv_valid <= valid;
 		data_matrix[0][0] <= row0_pixel;

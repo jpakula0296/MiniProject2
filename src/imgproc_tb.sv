@@ -40,6 +40,7 @@ initial begin
 	x_cont_in = 0;
 	y_cont_in = 0;
 	data_valid_in = 1;
+	sw = 1;
 	#20
 	rst = 1;
 	for (y = 0; y < WIDTH; y = y+1) begin

@@ -47,7 +47,7 @@ image_buffer imgbuff(
 );
 
 // 2d convolution of image w/ 3x3 filter
-conv convolution(
+conv convolution( 
 	.clk(iCLK),
 	.rst(iRST),
 	.data_matrix(data_matrix),
