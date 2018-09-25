@@ -55,16 +55,14 @@ assign pixel_valid_out = pixel_valid & row1_pixel_valid;
 // form 3x3 data matrix based on each pixel to pass to convolution
 always@(posedge clk, negedge rst) begin
 	if(!rst) begin
-		// conv_valid <= 1'b0;
 		for (j = 0; j < 3; j = j + 1) begin
-				for (k = 0; k < 3; k = k + 1) begin
-					data_matrix[j][k] <= 0; // entire matrix 0 on reset
-				end
+			for (k = 0; k < 3; k = k + 1) begin
+				data_matrix[j][k] <= 0; // entire matrix 0 on reset
+			end
 		end
 	end
 	else if (pixel_valid) begin
 		// shift over a pixel every clock
-		// conv_valid <= valid;
 		data_matrix[0][0] <= row0_pixel;
 		data_matrix[1][0] <= row1_pixel;
 		data_matrix[2][0] <= row2_pixel;
