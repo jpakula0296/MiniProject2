@@ -15,6 +15,7 @@ module imgproc(
 wire [11:0] gray_pixel, row0_pixel, row1_pixel, row2_pixel, conv_out;
 wire gray_pixel_valid, gray_pixel_edge;
 wire row1_pixel_valid, row1_pixel_edge;
+wire [11:0] data_matrix [2:0][2:0];
 
 assign oRed = conv_out;
 assign oGreen = conv_out;
@@ -41,26 +42,22 @@ image_buffer imgbuff(
 	.pixel_in(gray_pixel),		// input pixel
 	.pixel_edge(gray_pixel_edge),	// input pixel is an edge 1: true / 0 false
 	.pixel_valid(gray_pixel_valid),	// pixel is valid 	""
-	.row0_pixel(row0_pixel), // output pixels
-	.row1_pixel(row1_pixel),
-	.row2_pixel(row2_pixel),
-	.row1_pixel_edge(row1_pixel_edge),	// output pixel is an edge
-	.row1_pixel_valid(row1_pixel_valid)	// output pixel is valid
+	.pixel_valid_out(oDVAL),
+	.data_matrix(data_matrix)
 );
 
 // 2d convolution of image w/ 3x3 filter
 conv convolution(
 	.clk(iCLK),
 	.rst(iRST),
-	.valid(row1_pixel_valid),
-	.row0_pixel(row0_pixel),
-	.row1_pixel(row1_pixel),
-	.row2_pixel(row2_pixel),
+	.data_matrix(data_matrix),
 	.input_switch(iSW),
-	.row1_pixel_edge(row1_pixel_edge),
-	.conv_out(conv_out),
-	.conv_valid(oDVAL)
+	.conv_out(conv_out)
 );
+
+assign oRed = conv_out;
+assign oGreen = conv_out;
+assign oBlue = conv_out;
 
 
 endmodule
