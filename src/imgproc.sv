@@ -21,10 +21,6 @@ wire gray_pixel_valid, gray_pixel_edge;
 wire row1_pixel_valid, row1_pixel_edge;
 wire [11:0] data_matrix [2:0][2:0];
 
-assign oRed = conv_out;
-assign oGreen = conv_out;
-assign oBlue = conv_out;
-
 // convert image to grayscale pixel by pixel
 RAW2GRAY grayscale(
 	.clk(iCLK), // clock
@@ -47,7 +43,8 @@ image_buffer imgbuff(
 	.pixel_edge(gray_pixel_edge),	// input pixel is an edge 1: true / 0 false
 	.pixel_valid(gray_pixel_valid),	// pixel is valid 	""
 	.pixel_valid_out(oDVAL),
-	.data_matrix(data_matrix)
+	.data_matrix(data_matrix),
+	.row1_pixel_edge(row1_pixel_edge)
 );
 
 // 2d convolution of image w/ 3x3 filter
@@ -59,10 +56,10 @@ conv convolution(
 	.conv_out(conv_out) // our main output
 );
 
-// assign each color channel to our output
-assign oRed = conv_out;
-assign oGreen = conv_out;
-assign oBlue = conv_out;
+// assign each color channel to our output, don't display edges
+assign oRed = (~row1_pixel_edge) ? conv_out : 0;
+assign oGreen = (~row1_pixel_edge) ? conv_out : 0;
+assign oBlue = (~row1_pixel_edge) ? conv_out : 0;
 
 
 endmodule

@@ -2,7 +2,7 @@
  * register along with metadata to determine when the pixel will be valid
  * This is used to generate a 3x3 matrix for the filters to be applied convert
  */
-module image_buffer(clk, rst, pixel_in, pixel_edge, pixel_valid, pixel_valid_out, data_matrix);
+module image_buffer(clk, rst, pixel_in, pixel_edge, pixel_valid, pixel_valid_out, data_matrix, row1_pixel_edge);
 
 parameter DATA_WIDTH = 12; // 12 bit width
 parameter PIXEL_LENGTH = 640;
@@ -12,6 +12,7 @@ input clk, rst, pixel_edge, pixel_valid; // check if we have rgb pixel edge
 input [DATA_WIDTH-1:0] pixel_in;
 output reg [11:0] data_matrix [2:0][2:0];  // 3x3 array of pixels
 output pixel_valid_out;
+output row1_pixel_edge;
 
 integer i, j, k; // counters for shift reg and data matrix
 
@@ -38,7 +39,7 @@ end
 
 
 // assign incoming RGB signals to each third of shift register
-wire row1_pixel_edge, row1_pixel_valid;
+wire row1_pixel_valid;
 wire [DATA_WIDTH-1:0] row0_pixel;
 wire [DATA_WIDTH-1:0] row1_pixel;
 wire [DATA_WIDTH-1:0] row2_pixel;
